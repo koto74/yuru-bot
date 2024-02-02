@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  bot:
+    container_name: discord_bot
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+    environment:
+      - TOKEN=${TOKEN}
+      - GUILDS=${GUILDS}
+    command: ["python3", "main.py"]
