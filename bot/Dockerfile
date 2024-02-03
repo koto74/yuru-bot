@@ -1,7 +1,9 @@
 FROM python:3.10.5-alpine3.16
 
-COPY requirements.txt ./
+WORKDIR /app
 
-RUN pip install --no-cache-dir -r requirements.txt
+COPY /bot/requirements.txt ./
+
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 COPY ./bot /app
