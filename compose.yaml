@@ -5,11 +5,9 @@ services:
     container_name: discord_bot
     build:
       context: .
-      dockerfile: Dockerfile
-    working_dir: /app
+      dockerfile: ./bot/Dockerfile
     volumes:
-      - ./bot:/app
+      - ./bot/src:/app
     environment:
       - TOKEN=${TOKEN}
-      - GUILDS=${GUILDS}
     command: ["python3", "main.py"]
