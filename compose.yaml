@@ -1,16 +1,15 @@
 version: "3"
+
 services:
   bot:
     container_name: discord_bot
     build:
       context: .
-      dockerfile: Dockerfile
-    working_dir: /app
+      dockerfile: ./bot/Dockerfile
     volumes:
       - ./bot/src:/app
     environment:
       - TOKEN=${TOKEN}
-      - GUILDS=${GUILDS}
       - VOICE_CHANNEL_ID_GENERAL=${VOICE_CHANNEL_ID_GENERAL}
       - VOICE_CHANNEL_ID_GAME=${VOICE_CHANNEL_ID_GAME}
       - TEXT_CHANNEL_ID=${TEXT_CHANNEL_ID}
