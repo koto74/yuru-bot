@@ -18,7 +18,7 @@ async def on_ready():
 
 @client.event
 async def on_voice_state_update(user, before, after):
-    voice_access_notice(user, before,after)
+    await voice_access_notice(user, before, after, client, TEXT_CHANNEL_ID, VOICE_CHANNEL_ID)
 
 @client.event
 async def on_message(message):
