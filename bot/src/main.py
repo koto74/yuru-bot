@@ -1,5 +1,6 @@
 import os
 from discord import Intents, Client
+from packages.event_module import message_handler
 
 TOKEN = os.getenv("TOKEN")
 
@@ -10,6 +11,12 @@ client = Client(intents=intents)
 @client.event
 async def on_ready():
     print("Ready!")
+
+@client.event
+async def on_message(message):
+    if message.author.bot:
+        return
+    await message_handler(message)
 
 # Bot起動
 client.run(TOKEN)

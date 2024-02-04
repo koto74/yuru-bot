@@ -6,4 +6,4 @@ COPY /bot/requirements.txt ./
 
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
-COPY ./bot /app
+COPY ./bot/src /app
