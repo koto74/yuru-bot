@@ -14,6 +14,8 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    if message.author.bot:
+        return
     await message_handler(message)
 
 # Bot起動
