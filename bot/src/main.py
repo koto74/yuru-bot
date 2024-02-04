@@ -14,11 +14,7 @@ client = Client(intents=intents)
 async def on_ready():
     print("Ready!")
 
-@client.event
-async def on_message(message):
-    if message.author.bot:
-        return
-    await message_handler(message)
+
 @client.event
 async def on_voice_state_update(user, before, after):
     if before.channel != after.channel:
