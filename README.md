@@ -14,7 +14,9 @@ docker compose up
 ```
 
 ## .env
-カレントディレクトリに`.env`ファイルを用意し`TOKEN`を記述してください。
+カレントディレクトリに`.env`ファイルを用意し`TOKEN`とチャンネルIDを記述してください。
 ```
 TOKEN=hogehogehogehoge
+VOICE_CHANNEL_ID=ボイスチャンネルのID
+TEXT_CHANNEL_ID=通知を投稿したいチャンネルのID
 ```
