@@ -28,5 +28,11 @@ async def on_voice_state_update(user, before, after):
         if after.channel is not None and after.channel.id == VOICE_CHANNEL_ID:
             await botRoom.send("**" + after.channel.name + "** に、__" + user.display_name + "__  が参加")    
 
+@client.event
+async def on_message(message):
+    if message.author.bot:
+        return
+    await message_handler(message)
+
 # Bot起動
 client.run(TOKEN)
