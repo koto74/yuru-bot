@@ -10,4 +10,6 @@ services:
       - ./bot/src:/app
     environment:
       - TOKEN=${TOKEN}
+      - VOICE_CHANNEL_ID=${VOICE_CHANNEL_ID}
+      - TEXT_CHANNEL_ID=${TEXT_CHANNEL_ID}
     command: ["python3", "main.py"]
