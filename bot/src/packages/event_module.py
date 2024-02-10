@@ -1,7 +1,7 @@
 from .hello import handle_hello
 
 event_functions = {
-    'hello': handle_hello,
+    "hello": handle_hello,
 }
 
 async def message_handler(message):
