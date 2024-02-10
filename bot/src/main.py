@@ -35,11 +35,9 @@ async def on_voice_state_update(user, before, after):
 @tasks.loop(seconds=60)
 async def loop():
     current_japan_time = datetime.now(timezone(timedelta(hours=+9), "JST")).strftime("%H:%M")
-    #if (current_japan_time == "07:00"):
-        # channel = client.get_channel(TEXT_CHANNEL_ID)
-        # await channel.send(current_japan_time)
-    weather = WeatherInfo(client)
-    await weather.check_rain()
+    if (current_japan_time == "07:00"):
+        weather = WeatherInfo(client)
+        await weather.check_rain()
 
 # Bot起動
 client.run(TOKEN)
