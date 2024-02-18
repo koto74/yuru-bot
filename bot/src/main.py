@@ -26,12 +26,12 @@ async def on_message(message):
         return
     await message_handler(message)
 
-# 
+# ボイスチャンネル参加/退出時の通知
 @client.event
 async def on_voice_state_update(user, before, after):
     await voice_access_notice(user, before, after, client, TEXT_CHANNEL_ID, VOICE_CHANNEL_ID)
 
-
+# 定期実行関数
 @tasks.loop(seconds=60)
 async def loop():
     current_japan_time = datetime.now(timezone(timedelta(hours=+9), "JST")).strftime("%H:%M")
