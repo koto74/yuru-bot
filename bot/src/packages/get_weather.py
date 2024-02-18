@@ -16,7 +16,7 @@ class WeatherInfo():
             weather_data = self.get_weather(city)
             today_weather = weather_data["forecasts"][0]["telop"]
             if ("雨" in today_weather):
-                await self.send_weather_details(weather_data, city, send_channel_id) 
+                await self.send_rain_weather_details(weather_data, city, send_channel_id) 
 
     def get_weather(self, city_name):
         access_url = self.weather_api_url + self.set_weather_query(city_name)
@@ -28,7 +28,7 @@ class WeatherInfo():
         return "?city=" + city_id
 
     # 雨の日の天気情報を送信 
-    async def send_weather_details(self, weather_data, city, send_channel_id):
+    async def send_rain_weather_details(self, weather_data, city, send_channel_id):
         today_weather_embed = discord.Embed(title="今日 " + city + " は雨が降るらしいよ！",
                                             color=0x00ff00,
                                             url="https://weather.yahoo.co.jp/weather/jp/13/4410.html"
