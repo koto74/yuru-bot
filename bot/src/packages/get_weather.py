@@ -13,15 +13,15 @@ class WeatherInfo():
 
     async def send_rain_alert(self, send_channel_id):
         for city in self.city_id_map.keys():
-            weather_data = self.get_weather(city)
+            weather_data = self.__get_weather(city)
             if (weather_data is None):
                 return
             today_weather = weather_data["forecasts"][0]["telop"]
             if ("雨" in today_weather):
-                await self.send_rain_weather_details(weather_data, city, send_channel_id) 
+                await self.__send_rain_weather_details(weather_data, city, send_channel_id) 
 
-    def get_weather(self, city_name):
-        access_url = self.weather_api_url + self.set_weather_query(city_name)
+    def __get_weather(self, city_name):
+        access_url = self.weather_api_url + self.__set_weather_query(city_name)
         try:
             weather_data = requests.get(access_url).json()
         except requests.exceptions.RequestException as e:
@@ -29,12 +29,12 @@ class WeatherInfo():
             return None
         return weather_data
 
-    def set_weather_query(self, city):
+    def __set_weather_query(self, city):
         city_id = self.city_id_map[city]
         return "?city=" + city_id
 
     # 雨の日の天気情報を送信 
-    async def send_rain_weather_details(self, weather_data, city, send_channel_id):
+    async def __send_rain_weather_details(self, weather_data, city, send_channel_id):
         today_weather_embed = discord.Embed(title="今日 " + city + " は雨が降るらしいよ！",
                                             color=0x00ff00,
                                             url="https://weather.yahoo.co.jp/weather/jp/13/4410.html"
