@@ -14,13 +14,19 @@ class WeatherInfo():
     async def send_rain_alert(self, send_channel_id):
         for city in self.city_id_map.keys():
             weather_data = self.get_weather(city)
+            if (weather_data is None):
+                return
             today_weather = weather_data["forecasts"][0]["telop"]
             if ("雨" in today_weather):
                 await self.send_rain_weather_details(weather_data, city, send_channel_id) 
 
     def get_weather(self, city_name):
         access_url = self.weather_api_url + self.set_weather_query(city_name)
-        weather_data = requests.get(access_url).json()
+        try:
+            weather_data = requests.get(access_url).json()
+        except requests.exceptions.RequestException as e:
+            print(e)
+            return None
         return weather_data
 
     def set_weather_query(self, city):
