@@ -1,4 +1,3 @@
-import asyncio
 import random
 
 orochi_famous_saying_list = [
@@ -11,5 +10,4 @@ orochi_famous_saying_list = [
             ]
 
 async def handle_orochi(message):
-    await asyncio.sleep(2)
     await message.channel.send(random.choice(orochi_famous_saying_list))
