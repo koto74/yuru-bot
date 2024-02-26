@@ -5,18 +5,16 @@ discord用便利bot
 PEP: 8
 > https://pep8-ja.readthedocs.io/ja/latest/
 
-## Branch operation rule
-Git-Flow
+## 実行前に`.env`を設定
+カレントディレクトリに`.env`ファイルを用意し、以下の値を設定する
+```
+TOKEN=botのtoken
+ENTRY_EXIT_MONITOR_VOICE_CHANNEL_ID=監視するボイスチャンネルID
+ENTRY_EXIT_MONITOR_NOTIFICATION_CHANNEL_ID=ボイスチャンネル入退室を通知するチャンネルID
+WEATHER_NOTIFICATION_CHANNEL_ID=天気予報を通知するチャンネルID
+```
 
 ## Launching the development environment
 ```
 docker compose up
-```
-
-## .env
-カレントディレクトリに`.env`ファイルを用意し`TOKEN`とチャンネルIDを記述してください。
-```
-TOKEN=hogehogehogehoge
-VOICE_CHANNEL_ID=ボイスチャンネルのID
-TEXT_CHANNEL_ID=通知を投稿したいチャンネルのID
 ```
