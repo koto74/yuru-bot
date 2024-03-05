@@ -9,6 +9,7 @@ class WeatherInfo():
         self.city_id_map = {
             "東京": "130010",
             "神奈川": "140010",
+            "滋賀": "250010",
         }
 
     async def send_rain_alert(self, send_channel_id):
