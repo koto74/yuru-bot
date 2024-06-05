@@ -9,8 +9,12 @@ from packages.get_weather import WeatherInfo
 from commands.robokssay import robokssay
 
 TOKEN = os.getenv("TOKEN")
-ENTRY_EXIT_MONITOR_VOICE_CHANNEL_ID = int(os.getenv("ENTRY_EXIT_MONITOR_VOICE_CHANNEL_ID"))
-ENTRY_EXIT_MONITOR_NOTIFICATION_CHANNEL_ID = int(os.getenv("ENTRY_EXIT_MONITOR_NOTIFICATION_CHANNEL_ID"))
+ENTRY_EXIT_MONITOR_VOICE_CHANNEL_ID = int(
+    os.getenv("ENTRY_EXIT_MONITOR_VOICE_CHANNEL_ID")
+)
+ENTRY_EXIT_MONITOR_NOTIFICATION_CHANNEL_ID = int(
+    os.getenv("ENTRY_EXIT_MONITOR_NOTIFICATION_CHANNEL_ID")
+)
 WEATHER_NOTIFICATION_CHANNEL_ID = int(os.getenv("WEATHER_NOTIFICATION_CHANNEL_ID"))
 
 intents = Intents.all()
@@ -49,7 +53,9 @@ async def on_voice_state_update(user, before, after):
 # 定期実行関数
 @tasks.loop(seconds=60)
 async def loop():
-    current_japan_time = datetime.now(timezone(timedelta(hours=+9), "JST")).strftime("%H:%M")
+    current_japan_time = datetime.now(timezone(timedelta(hours=+9), "JST")).strftime(
+        "%H:%M"
+    )
     if current_japan_time == "07:00":
         weather = WeatherInfo(client)
         await weather.send_rain_alert(WEATHER_NOTIFICATION_CHANNEL_ID)
