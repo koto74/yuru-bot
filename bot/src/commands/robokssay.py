@@ -10,7 +10,7 @@ async def robokssay(interaction: Interaction, message: str):
             "       \\           ﾊ\n"
             "        \\       ———————\n"
             "         \\.  ／         ＼\n"
-            "           ／  ●      ●   ＼\n"
+            "           ／   ●     ●   ＼\n"
             "          /     ❘ニニニ❘     \\\n"
             "        ／|—————-———————————|ヽ\n"
             "       / /|     〇 〇 〇     |ヽヽ\n"
